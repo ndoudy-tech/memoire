@@ -102,14 +102,5 @@ pipeline {
 
     }
 
-    post {
-
-        changed {
-            emailext attachLog: true, body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT',  to: '${EMAIL}'
-        }
-        failure {
-            emailext attachLog: true, body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT',  to: '${EMAIL}'
-        }
-
-    }
+   
 }
