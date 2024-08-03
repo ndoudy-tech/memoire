@@ -88,12 +88,7 @@ pipeline {
          }
 
 
-        stage('Trigger ManifestUpdate') {
-            steps {
-                    build job: 'updateManifestFiles', parameters: [string(name: 'DOCKERTAG', value: TAG_SELECTOR)]
-            }
-
-        }
+     
         //jenkins k8S
 
 
