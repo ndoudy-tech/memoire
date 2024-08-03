@@ -30,7 +30,7 @@ pipeline {
 
         stage('Clean Package') {
             steps {
-                sh  "/usr/share/maven/bin/mvn clean package -DskipTests"
+                sh  " /opt/apache-maven-3.9.7/bin/mvn clean package -DskipTests"
                 stash includes: 'target/*', name: 'target'
                 script {
                     TAG_SELECTOR = readMavenPom().getVersion()
@@ -43,7 +43,7 @@ pipeline {
         stage('Units Tests') {
             when { branch 'recette' }
             steps {
-                sh '/usr/local/maven/bin/mvn clean verify -Dmaven.test.skip=true'
+                sh '/opt/apache-maven-3.9.7/bin/mvn clean verify -Dmaven.test.skip=true'
             }
             post {
                 success {
@@ -57,7 +57,7 @@ pipeline {
         /*stage('Snapshot On Nexus') {
             when { branch 'develop' }
             steps {
-                sh  "/usr/local/maven/bin/mvn deploy -DskipTests"
+                sh  "/opt/apache-maven-3.9.7/bin/mvn deploy -DskipTests"
             }
         }*/
 
